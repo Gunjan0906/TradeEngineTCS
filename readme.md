@@ -72,21 +72,26 @@ spark-submit --name "TradeExecEngine" --master local --class com.spark.trade.eng
  2. **SparkSessionObject.scala** : defined spark session object, called in main SparkMainTradeEngine  
  3. **ReadDataFile.scala**: read the input file and return dataframe, file details passed by spark-submit argument
  4. **TradeProcessEngine.scala**: implementation of the trade order Engine logic, input parameter : dataframe
-	 a. divide the dataframe for BUY and SELL 
+	 a. divide the dataframe for BUY and SELL
+
  	 b. inner join both the dataframe on Quantity
+
  	 c. select the columns :                  
              Max(buy.order,sell.order) as orderID1,
              Min(buy.order,sell.order) as orderID2,
              Max(buy.orderTime,sell.oderTime) as orderTime,
 	         buy.Quantity    as Quantity, 
-	         when(sell.OrderID < buy.OrderID) then sell.price else buy.price    as price  	 
-    d. return matchedOrder dataframe  	 
-    f. collect OrderId from matchedOrder dataframe  	
-    g. select record from input dataframe where OrderId not in
-    collect OrderId from matchedOrder dataframe  	 
+	         when(sell.OrderID < buy.OrderID) then sell.price else buy.price as price
+    	 
+    d. return matchedOrder dataframe
+    
+    f. collect OrderId from matchedOrder dataframe
+    	
+    g. select record from input dataframe where OrderId not in collect OrderId from matchedOrder dataframe
+    	 
     h. return unmatchedOrder
 
-5. **WriteDataFile.scala** : write each of the output dataframe(matchedOrder and unmatchedOrderbook) without header and remove the file directory and part files, output file detils from spark submit arguments
+6. **WriteDataFile.scala** : write each of the output dataframe(matchedOrder and unmatchedOrderbook) without header and remove the file directory and part files, output file detils from spark submit arguments
 ## Input file
 
 ```
