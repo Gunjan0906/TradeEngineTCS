@@ -77,6 +77,7 @@ spark-submit --name "TradeExecEngine" --master local --class com.spark.trade.eng
  	 b. inner join both the dataframe on Quantity
 
  	 c. select the columns :                  
+
              Max(buy.order,sell.order) as orderID1,
     
              Min(buy.order,sell.order) as orderID2,
