@@ -51,7 +51,7 @@ org.apache.spark:spark-sql_2.12:3.4.1
 
 ## Run Command
 ```
-spark-submit --name "TradeExecEngine" --master local --class com.spark.trade.engine.code.SparkMainTradeEngine target/FXOrderEngine-1.0.0-SNAPSHOT-jar-with-dependencies.jar input/exampleOrders.csv output/matchOrder.csv output/orderBook.csv***
+spark-submit --name "TradeExecEngine" --master local --class com.spark.trade.engine.code.SparkMainTradeEngine target/FXOrderEngine-1.0.0-SNAPSHOT-jar-with-dependencies.jar input/exampleOrders.csv output/matchOrder.csv output/orderBook.csv
 ```
 
 **spark submit details :** 
