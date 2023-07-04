@@ -78,10 +78,14 @@ spark-submit --name "TradeExecEngine" --master local --class com.spark.trade.eng
 
  	 c. select the columns :                  
              Max(buy.order,sell.order) as orderID1,
+    
              Min(buy.order,sell.order) as orderID2,
+    
              Max(buy.orderTime,sell.oderTime) as orderTime,
-	         buy.Quantity    as Quantity, 
-	         when(sell.OrderID < buy.OrderID) then sell.price else buy.price as price
+    
+	     buy.Quantity as Quantity,
+    
+	     when(sell.OrderID < buy.OrderID) then sell.price else buy.price as price
     	 
     d. return matchedOrder dataframe
     
